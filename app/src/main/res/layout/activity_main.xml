@@ -6,16 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
+    <ImageButton
         android:id="@+id/minus"
         android:layout_width="56dp"
         android:layout_height="35dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
-        android:text="minus"
-        android:textSize="8sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tunnit"
-        app:layout_constraintEnd_toStartOf="@+id/tunnit" />
+        app:layout_constraintBottom_toBottomOf="@+id/tunnit"
+        app:layout_constraintEnd_toStartOf="@+id/tunnit"
+        app:layout_constraintTop_toTopOf="@+id/tunnit" />
 
     <Button
         android:id="@+id/tallenna"
@@ -103,15 +102,14 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/tunnit"
         app:layout_constraintStart_toEndOf="@+id/tunnit" />
 
-    <Button
+    <ImageButton
         android:id="@+id/plus"
         android:layout_width="57dp"
         android:layout_height="36dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:text="plus"
-        android:textSize="8sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/h"
-        app:layout_constraintStart_toStartOf="@+id/h" />
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tunnit"
+        app:layout_constraintStart_toEndOf="@+id/h"
+        app:layout_constraintTop_toTopOf="@+id/tunnit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
