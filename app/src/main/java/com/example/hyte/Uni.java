@@ -11,6 +11,7 @@ public class Uni implements Serializable {
     public Uni(double time, int happines) { // simple counter collects time and happines
         this.time = time;
         this.happines = happines;
+
     }
     public int getHappines() {
         return happines;
