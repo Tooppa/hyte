@@ -10,17 +10,18 @@
         android:id="@+id/minus"
         android:layout_width="56dp"
         android:layout_height="35dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
         android:text="minus"
         android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tunnit"
-        app:layout_constraintEnd_toStartOf="@+id/tunnit"
-        app:layout_constraintTop_toTopOf="@+id/tunnit" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tunnit"
+        app:layout_constraintEnd_toStartOf="@+id/tunnit" />
 
     <Button
         android:id="@+id/tallenna"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,24 +31,22 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/uni_info"
-        app:layout_constraintBottom_toTopOf="@+id/radGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
         android:id="@+id/radGroup"
-        android:layout_width="205dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_width="224dp"
+        android:layout_height="46dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tunnit"
+        app:layout_constraintVertical_bias="0.060000002">
 
         <RadioButton
             android:id="@+id/rad1"
@@ -89,10 +88,9 @@
         android:id="@+id/tunnit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
         android:text="@string/hour"
-        app:layout_constraintBottom_toTopOf="@+id/tallenna"
-        app:layout_constraintEnd_toStartOf="@+id/radGroup"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -102,19 +100,18 @@
         android:layout_height="wrap_content"
         android:text="h/m"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tunnit"
-        app:layout_constraintEnd_toStartOf="@+id/plus"
-        app:layout_constraintStart_toEndOf="@+id/tunnit"
-        app:layout_constraintTop_toTopOf="@+id/tunnit" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tunnit"
+        app:layout_constraintStart_toEndOf="@+id/tunnit" />
 
     <Button
         android:id="@+id/plus"
         android:layout_width="57dp"
         android:layout_height="36dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
         android:text="plus"
         android:textSize="8sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tunnit"
-        app:layout_constraintStart_toEndOf="@+id/h"
-        app:layout_constraintTop_toTopOf="@+id/tunnit" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/h"
+        app:layout_constraintStart_toStartOf="@+id/h" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
