@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         tunnit = findViewById(R.id.tunnit);
 
 
-        Button plus = findViewById(R.id.plus);
+        ImageButton plus = findViewById(R.id.plus);
         plus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 tunnit.setText(String.valueOf(counter.getVar()));
             }
         });
-        Button minus = findViewById(R.id.minus);
+        ImageButton minus = findViewById(R.id.minus);
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
