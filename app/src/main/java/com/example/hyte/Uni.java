@@ -22,6 +22,12 @@ public class Uni {
     public String getTime() {
         return String.valueOf(this.time);
     }
+    public double getTimeDouble() {
+        return this.time;
+    }
+    public int getHappinesInt() {
+        return this.happines;
+    }
 
     public String toString(){
         return this.time + " " + this.happines;
