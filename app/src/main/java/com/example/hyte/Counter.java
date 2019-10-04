@@ -3,6 +3,8 @@ package com.example.hyte;
 public class Counter {
     private int var;
     private int minT;
+    private String minutes;
+    private String hours;
 
     public Counter(){
         this.var = 0;
@@ -33,25 +35,22 @@ public class Counter {
             return this.var;
 
     }
-    public String getHours(){
+    public String getTime(){ //Spagetti that creates counter how i want it
         if(this.minT == 100){
-            return String.valueOf(this.var / 100);
+            this.hours = String.valueOf(this.var / 100);
         }else {
-            return String.valueOf((this.var - minT) / 100);
+            this.hours = String.valueOf((this.var - minT) / 100);
         }
-
-    }
-    public String getMinutes(){
-
         if(this.minT == 25){
-            return ":15";
+            this.minutes = ":15";
         }else if(this.minT == 50) {
-            return ":30";
+            this.minutes = ":30";
         }else if(this.minT == 75){
-            return ":45";
+            this.minutes = ":45";
         }else{
-            return ":00";
+            this.minutes = ":00";
         }
+        return this.hours + this.minutes;
 
     }
 }
