@@ -19,8 +19,6 @@ public class TuntiNakyma extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tunti_nakyma);
         TextView numero = findViewById(R.id.numero);
-        Intent i = getIntent();
-        Uni kayttaja = (Uni)i.getSerializableExtra("uniData"); // gets the copy of kayttaja from mainactivity
-        numero.setText("happines " + Integer.valueOf(kayttaja.getHappines()) + " Time " +  Double.valueOf(kayttaja.getTime()));
+        numero.setText("happines " + Integer.valueOf(Uni.getInstance().getHappines()) + " Time " +  Double.valueOf(Uni.getInstance().getTime()));
     }
 }

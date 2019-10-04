@@ -1,18 +1,31 @@
 package com.example.hyte;
 
 
-import java.io.Serializable;
+import android.provider.Settings;
 
-public class Uni implements Serializable {
+
+public class Uni {
 
     private double time;
     private int happines;
+    private static Uni mInstance;
 
-    public Uni(double time, int happines) { // simple counter collects time and happines
+
+    public static Uni getInstance(){
+        if(mInstance == null) {
+            mInstance = new Uni();
+        }
+        return mInstance;
+    }
+    private Uni() {
+        this.time = 0;
+        this.happines = 0;
+    }
+    public void setTimeHappines(double time, int happines) {
         this.time = time;
         this.happines = happines;
-
     }
+
     public int getHappines() {
         return happines;
     }

@@ -77,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(r5.getId() == rGroup.getCheckedRadioButtonId()) {
                     radValue = 5;
                 }
-                Uni kayttaja = new Uni(counter.getVar(), radValue);
-                intent.putExtra("uniData", kayttaja); //makes a copy of kayttaja to the new intent trough serializable function
+                Uni.getInstance().setTimeHappines(counter.getVar(), radValue);
                 startActivity(intent);
             }
         });
