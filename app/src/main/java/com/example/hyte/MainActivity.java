@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         rGroup = findViewById(R.id.radGroup);
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
-        ListView list = findViewById(R.id.listview);
+        final ListView list = findViewById(R.id.listview);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, GlobalArray.getInstance().getArray());
         list.setAdapter(adapter);
 
@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Uni uni = new Uni(counter.getVar(), radValue);
                 GlobalArray.getInstance().addToArray(uni);
-                startActivity(intent);
+                //startActivity(intent);
+                list.invalidateViews();
             }
         });
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
