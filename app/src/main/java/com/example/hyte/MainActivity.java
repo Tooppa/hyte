@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         rGroup = findViewById(R.id.radGroup);
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
+        ListView list = findViewById(R.id.listview);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, GlobalArray.getInstance().getArray());
+        list.setAdapter(adapter);
+
 
 
         ImageButton plus = findViewById(R.id.plus);
@@ -54,10 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 tunnit.setText(String.valueOf(counter.getVar()));
             }
         });
-        ListView list = findViewById(R.id.listview);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, GlobalArray.getInstance().getArray());
-        list.setAdapter(adapter);
-
 
         Button tallenna = findViewById(R.id.tallenna);
         tallenna.setOnClickListener(new View.OnClickListener() { // sets onclick listener to 3 buttons
@@ -80,8 +80,8 @@ public class MainActivity extends AppCompatActivity {
                 else if(r5.getId() == rGroup.getCheckedRadioButtonId()) {
                     radValue = 5;
                 }
-                Uni.getInstance().setTimeHappines(counter.getVar(), radValue);
-                GlobalArray.getInstance().addToArray(Uni.getInstance());
+                Uni uni = new Uni(counter.getVar(), radValue);
+                GlobalArray.getInstance().addToArray(uni);
                 startActivity(intent);
             }
         });

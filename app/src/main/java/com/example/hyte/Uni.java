@@ -10,17 +10,7 @@ public class Uni {
     private static Uni mInstance;
 
 
-    public static Uni getInstance(){
-        if(mInstance == null) {
-            mInstance = new Uni();
-        }
-        return mInstance;
-    }
-    private Uni() {
-        this.time = 0;
-        this.happines = 0;
-    }
-    public void setTimeHappines(double time, int happines) {
+    public Uni(double time, int happines) {
         this.time = time;
         this.happines = happines;
     }
