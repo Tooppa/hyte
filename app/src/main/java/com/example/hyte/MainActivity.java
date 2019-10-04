@@ -1,11 +1,15 @@
 package com.example.hyte;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,6 +27,25 @@ public class MainActivity extends AppCompatActivity {
     int radValue;
     Counter counter;
     TextView tunnit;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.forward_button, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.forwardB:
+                Intent intent = new Intent(getBaseContext(), TuntiNakyma.class); //creates new intent
+                startActivity(intent);
+                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         tallenna.setOnClickListener(new View.OnClickListener() { // sets onclick listener to 3 buttons
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), TuntiNakyma.class); //creates new intent
 
                 if(r1.getId() == rGroup.getCheckedRadioButtonId()) {
                     radValue = 1;
@@ -82,10 +104,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Uni uni = new Uni(counter.getVar(), radValue);
                 GlobalArray.getInstance().addToArray(uni);
-                //startActivity(intent);
                 list.invalidateViews();
             }
         });
+
 
 
     }
