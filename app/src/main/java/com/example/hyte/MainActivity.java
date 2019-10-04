@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
     RadioButton r1, r2, r3, r4, r5;
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     int radValue;
     Counter counter;
     TextView tunnit;
+    public static final String EXTRA = "";
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,7 +112,15 @@ public class MainActivity extends AppCompatActivity {
                 list.invalidateViews();
             }
         });
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() { //tapping the ListView opens up a popup window
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent nextactivity = new Intent(MainActivity.this,Popup.class);
+                nextactivity.putExtra(EXTRA, i);
+                startActivity(nextactivity);
 
+            }
+        });
 
 
     }
