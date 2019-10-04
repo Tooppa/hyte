@@ -15,12 +15,12 @@ public class Uni {
         this.happines = happines;
     }
 
-    public int getHappines() {
-        return happines;
+    public String getHappines() {
+        return String.valueOf(this.happines);
     }
 
-    public double getTime() {
-        return time;
+    public String getTime() {
+        return String.valueOf(this.time);
     }
 
     public String toString(){

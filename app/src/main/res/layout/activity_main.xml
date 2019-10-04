@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radGroup" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -95,7 +95,7 @@
         android:text="@string/hour"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
 
     <TextView
         android:id="@+id/h"

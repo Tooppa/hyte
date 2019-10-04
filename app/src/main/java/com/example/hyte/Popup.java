@@ -3,6 +3,7 @@ package com.example.hyte;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -24,7 +25,8 @@ public class Popup extends Activity {
         Bundle b = getIntent().getExtras();
         int i = b.getInt(MainActivity.EXTRA,0);
 
-
+        ((TextView)findViewById(R.id.textViewTime)).setText(GlobalArray.getInstance().getArray().get(i).getTime());
+        ((TextView)findViewById(R.id.textViewHappyness)).setText(GlobalArray.getInstance().getArray().get(i).getHappines());
 
     }
 }
