@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(r5.getId() == rGroup.getCheckedRadioButtonId()) {
                     radValue = 5;
                 }
-                Uni uni = new Uni(counter.getVar(), radValue);
+                Uni uni = new Uni((counter.getVar()/100), radValue);
                 GlobalArray.getInstance().addToArray(uni);
                 list.invalidateViews();
             }

@@ -30,7 +30,7 @@ public class Counter {
         }
     }
     public double getVar(){
-            return this.var/100;
+            return this.var;
 
     }
     public String getHours(){
