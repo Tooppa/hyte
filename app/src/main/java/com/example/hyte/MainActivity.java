@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         ListView list = findViewById(R.id.listview);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, GlobalArray.getInstance().getArray());
+        list.setAdapter(adapter);
 
 
         Button tallenna = findViewById(R.id.tallenna);
@@ -78,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     radValue = 5;
                 }
                 Uni.getInstance().setTimeHappines(counter.getVar(), radValue);
+                GlobalArray.getInstance().addToArray(Uni.getInstance());
                 startActivity(intent);
             }
         });

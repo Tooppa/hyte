@@ -32,4 +32,8 @@ public class Uni {
     public double getTime() {
         return time;
     }
+
+    public String toString(){
+        return this.time + " " + this.happines;
+    }
 }
