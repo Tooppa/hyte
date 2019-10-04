@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     int radValue;
     Counter counter;
     TextView tunnit;
+    TextView minutes;
     public static final String EXTRA = "";
 
 
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         rGroup = findViewById(R.id.radGroup);
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
+        minutes = findViewById(R.id.minutes);
         final ListView list = findViewById(R.id.listview);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, GlobalArray.getInstance().getArray());
         list.setAdapter(adapter);
@@ -75,15 +77,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 counter.add();
-                tunnit.setText(String.valueOf(counter.getVar()));
+                tunnit.setText(counter.getHours());
+                minutes.setText(counter.getMinutes());
             }
         });
-        ImageButton minus = findViewById(R.id.minus);
+        final ImageButton minus = findViewById(R.id.minus);
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 counter.subtract();
-                tunnit.setText(String.valueOf(counter.getVar()));
+                tunnit.setText(counter.getHours());
+                minutes.setText(counter.getMinutes());
             }
         });
 

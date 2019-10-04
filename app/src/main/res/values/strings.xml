@@ -2,5 +2,6 @@
     <string name="app_name">hyte</string>
     <string name="uni_info">Merkitse unen määrä ja laatu</string>
     <string name="submit">Tallenna</string>
-    <string name="hour">0.0</string>
+    <string name="hour">00</string>
+    <string name="min">:00</string>
 </resources>

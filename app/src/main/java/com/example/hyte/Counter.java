@@ -1,27 +1,57 @@
 package com.example.hyte;
 
 public class Counter {
-    private double var;
+    private int var;
+    private int minT;
 
     public Counter(){
-        this.var = 0.00;
+        this.var = 0;
     }
     public void add(){
-        this.var += 0.50; // counter works by 30 min intervals can be changed here
+        this.var += 25;
+
+        if(this.minT == 100){
+            this.minT = 0;
+            this.minT += 25;
+        }else{
+            this.minT += 25;
+        }
     }
     public void subtract(){
-        if(this.var - 0.50 < 0){
-            this.var = 0.00;
+        if(this.var - 25 < 0){
+            this.var = 0;
         }else {
-            this.var -= 0.50;
+            this.var -= 25;
+        }
+        if(this.minT == 0) {
+            this.minT = 0;
+        }else{
+            this.minT -= 25;
         }
     }
     public double getVar(){
-        if(this.var % 1 == 0.50){
-            double hour = (this.var - 0.50) + 0.30; // changes variable to hour/min format
-            return hour;
+            return this.var/100;
+
+    }
+    public String getHours(){
+        if(this.minT == 100){
+            return String.valueOf(this.var / 100);
         }else {
-            return this.var;
+            return String.valueOf((this.var - minT) / 100);
         }
+
+    }
+    public String getMinutes(){
+
+        if(this.minT == 25){
+            return ":15";
+        }else if(this.minT == 50) {
+            return ":30";
+        }else if(this.minT == 75){
+            return ":45";
+        }else{
+            return ":00";
+        }
+
     }
 }

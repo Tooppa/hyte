@@ -7,7 +7,6 @@ public class Uni {
 
     private double time;
     private int happines;
-    private static Uni mInstance;
 
 
     public Uni(double time, int happines) {
