@@ -19,6 +19,16 @@ public class Counter {
             this.minT += 25;
         }
     }
+    public void addHour(){
+        this.var += 100;
+    }
+    public void subtractHour(){
+        if(this.var - 100 < 0){
+            this.var = 0;
+        }else {
+            this.var -= 100;
+        }
+    }
     public void subtract(){
         if(this.var - 25 < 0){
             this.var = 0;
