@@ -7,7 +7,7 @@ public class Counter {
         this.var = 0.00;
     }
     public void add(){
-        this.var += 0.50; // counter works vy 30 min intervals can be changed here
+        this.var += 0.50; // counter works by 30 min intervals can be changed here
     }
     public void subtract(){
         if(this.var - 0.50 < 0){

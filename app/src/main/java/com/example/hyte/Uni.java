@@ -1,7 +1,6 @@
 package com.example.hyte;
 
 
-import android.provider.Settings;
 
 
 public class Uni {
