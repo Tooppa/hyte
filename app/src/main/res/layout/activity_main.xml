@@ -122,7 +122,7 @@
         android:background="@null"/>
 
     <ListView
-        android:id="@+id/Listview"
+        android:id="@+id/listview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"

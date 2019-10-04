@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 tunnit.setText(String.valueOf(counter.getVar()));
             }
         });
+        ListView list = findViewById(R.id.listview);
+
 
         Button tallenna = findViewById(R.id.tallenna);
         tallenna.setOnClickListener(new View.OnClickListener() { // sets onclick listener to 3 buttons
