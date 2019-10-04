@@ -12,6 +12,7 @@ public class Popup extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_popup);
+
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
@@ -19,5 +20,11 @@ public class Popup extends Activity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.6),(int)(height*.4));
+
+        Bundle b = getIntent().getExtras();
+        int i = b.getInt(MainActivity.EXTRA,0);
+
+
+
     }
 }

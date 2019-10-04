@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     int radValue;
     Counter counter;
     TextView tunnit;
+    public static final String EXTRA = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                startActivity(new Intent(MainActivity.this,Popup.class));
+                Intent nextactivity = new Intent(MainActivity.this,Popup.class);
+                nextactivity.putExtra(EXTRA, i);
+                startActivity(nextactivity);
 
             }
         });
