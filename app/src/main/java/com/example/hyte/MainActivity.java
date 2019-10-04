@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 list.invalidateViews();
             }
         });
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() { //tapping the ListView opens up a popup window
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent nextactivity = new Intent(MainActivity.this,Popup.class);
