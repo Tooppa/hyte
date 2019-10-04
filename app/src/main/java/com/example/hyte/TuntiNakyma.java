@@ -19,6 +19,6 @@ public class TuntiNakyma extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tunti_nakyma);
         TextView numero = findViewById(R.id.numero);
-        numero.setText("happines " + Integer.valueOf(Uni.getInstance().getHappines()) + " Time " +  Double.valueOf(Uni.getInstance().getTime()));
+        numero.setText("terve");
     }
 }
