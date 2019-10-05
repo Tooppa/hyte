@@ -2,7 +2,7 @@ package com.example.hyte;
 
 public class Counter {
     private int var;
-    private int minT;
+    private int min;
     private String minutes;
     private String hours;
 
@@ -12,11 +12,11 @@ public class Counter {
     public void add(){
         this.var += 25;
 
-        if(this.minT == 100){
-            this.minT = 0;
-            this.minT += 25;
+        if(this.min == 100){
+            this.min = 0;
+            this.min += 25;
         }else{
-            this.minT += 25;
+            this.min += 25;
         }
     }
     public void addHour(){
@@ -35,27 +35,27 @@ public class Counter {
         }else {
             this.var -= 25;
         }
-        if(this.minT == 0) {
-            this.minT = 0;
+        if(this.min == 0) {
+            this.min = 0;
         }else{
-            this.minT -= 25;
+            this.min -= 25;
         }
     }
     public double getVar(){
             return this.var;
 
     }
-    public String getTime(){ //Spagetti that creates counter how i want it
-        if(this.minT == 100){
+    public String getHourAndMinute(){ //Spagetti that creates counter how i want it
+        if(this.min == 100){
             this.hours = String.valueOf(this.var / 100);
         }else {
-            this.hours = String.valueOf((this.var - minT) / 100);
+            this.hours = String.valueOf((this.var - min) / 100);
         }
-        if(this.minT == 25){
+        if(this.min == 25){
             this.minutes = ":15";
-        }else if(this.minT == 50) {
+        }else if(this.min == 50) {
             this.minutes = ":30";
-        }else if(this.minT == 75){
+        }else if(this.min == 75){
             this.minutes = ":45";
         }else{
             this.minutes = ":00";

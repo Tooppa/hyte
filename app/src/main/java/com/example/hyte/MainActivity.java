@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 counter.add();
-                tunnit.setText(counter.getTime());
+                tunnit.setText(counter.getHourAndMinute());
             }
         });
         final ImageButton minus = findViewById(R.id.minus);
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter.subtract();
-                tunnit.setText(counter.getTime());
+                tunnit.setText(counter.getHourAndMinute());
             }
         });
 
