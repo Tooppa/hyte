@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +22,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { //creates button to the navbar
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.forward_button, menu);
         return true;
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.forwardB:
-                Intent intent = new Intent(getBaseContext(), TuntiNakyma.class); //creates new intent
+                Intent intent = new Intent(getBaseContext(), TuntiNakyma.class); //creates new intent when navbar button is clicked
                 startActivity(intent);
                 return true;
                 default:
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences shared = getSharedPreferences("HYTE", MODE_PRIVATE);
+        final SharedPreferences.Editor editor = shared.edit();
+        final ArrayList<Uni> array = new ArrayList<>();
         r1 = findViewById(R.id.rad1);
         r2 = findViewById(R.id.rad2);
         r3 = findViewById(R.id.rad3);
@@ -65,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
         final ListView list = findViewById(R.id.listview);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, GlobalArray.getInstance().getArray());
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
         list.setAdapter(adapter);
 
 
@@ -108,7 +114,12 @@ public class MainActivity extends AppCompatActivity {
                     radValue = 5;
                 }
                 Uni uni = new Uni((counter.getVar()/100), radValue);
-                GlobalArray.getInstance().addToArray(uni);
+                array.add(uni);
+                Gson gson = new Gson();
+                String json = gson.toJson(array);
+                editor.putString("Uni", json);
+                editor.commit();
+                //GlobalArray.getInstance().addToArray(uni);
                 list.invalidateViews();
             }
         });
