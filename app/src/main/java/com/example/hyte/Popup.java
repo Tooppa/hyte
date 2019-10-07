@@ -42,9 +42,9 @@ public class Popup extends Activity {
         ((TextView)findViewById(R.id.textViewHappiness)).setText("Unenlaatu "+data.get(i).getHappines()); //and happiness
 
         if (data.get(i).getTimeDouble() > 7.0 && data.get(i).getHappinesInt() >= 3) {
-            ((ImageView)findViewById(R.id.imageViewThumbUpDown)).setImageResource(R.drawable.thumbsup);
+            ((ImageView)findViewById(R.id.imageViewThumbUpDown)).setImageResource(R.drawable.thumb_up);
         } else {
-            ((ImageView)findViewById(R.id.imageViewThumbUpDown)).setImageResource(R.drawable.thumbsdown);
+            ((ImageView)findViewById(R.id.imageViewThumbUpDown)).setImageResource(R.drawable.thumb_down);
         }
     }
 
