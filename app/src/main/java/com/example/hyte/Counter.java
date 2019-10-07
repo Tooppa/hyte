@@ -45,6 +45,26 @@ public class Counter {
             return this.var;
 
     }
+    public String getMinutes(){
+        if(this.min == 25){
+            this.minutes = "15";
+        }else if(this.min == 50) {
+            this.minutes = "30";
+        }else if(this.min == 75){
+            this.minutes = "45";
+        }else{
+            this.minutes = "00";
+        }
+        return this.minutes;
+    }
+    public String getHours(){
+        if(this.min == 100){
+            this.hours = String.valueOf(this.var / 100);
+        }else {
+            this.hours = String.valueOf((this.var - min) / 100);
+        }
+        return this.hours;
+    }
     public String getHourAndMinute(){ //Spagetti that creates counter how i want it
         if(this.min == 100){
             this.hours = String.valueOf(this.var / 100);
