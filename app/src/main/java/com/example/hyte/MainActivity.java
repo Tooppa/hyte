@@ -77,13 +77,13 @@ public class MainActivity extends AppCompatActivity {
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
         final ListView list = findViewById(R.id.listview);
-        if(shared.getString("HYTE", null) == null){
+        Gson gson = new Gson();
+        String json = shared.getString("Uni", null);
+        if(json == null){
             array = new ArrayList<>();
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, array);
             list.setAdapter(adapter);
         }else{
-            Gson gson = new Gson();
-            String json = shared.getString("Uni", null);
             Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
             array = gson.fromJson(json, type);
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, array);
