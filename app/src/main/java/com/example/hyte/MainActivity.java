@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity {
         final ListView list = findViewById(R.id.listview);
         Gson gson = new Gson();
         String json = shared.getString("Uni", null);
-        if(json == null){
+        if(json == null){ // checks that shared hasnt been created if not creates new arraylist
             array = new ArrayList<>();
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, array);
             list.setAdapter(adapter);
-        }else{
+        }else{ // if it has been created it copies old to new arraylist
             Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
             array = gson.fromJson(json, type);
             ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, array);
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        final ImageButton plus = findViewById(R.id.plus);
+        final ImageButton plus = findViewById(R.id.plus); // onclick listener for all buttons
         plus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button tallenna = findViewById(R.id.tallenna);
-        tallenna.setOnClickListener(new View.OnClickListener() { // sets onclick listener to 3 buttons
+        tallenna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
