@@ -55,6 +55,7 @@ public class Popup extends Activity {
             }
         });
 
+        ((TextView)findViewById(R.id.textViewDate)).setText(data.get(i).getSimpleDate());
         ((TextView)findViewById(R.id.textViewTime)).setText("Nukuttu "+data.get(i).getTime()+" tuntia"); //setting the time
         ((TextView)findViewById(R.id.textViewHappiness)).setText("Unenlaatu "+data.get(i).getHappines()); //and happiness
 
