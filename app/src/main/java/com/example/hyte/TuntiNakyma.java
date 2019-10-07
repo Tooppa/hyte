@@ -20,11 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TuntiNakyma extends AppCompatActivity {
+    public static final String TAG = "logging TuntiNakyma";
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_tunti_nakyma);
         TextView numero = findViewById(R.id.numero);
         SharedPreferences shared = getSharedPreferences("HYTE", MODE_PRIVATE);
@@ -34,4 +36,40 @@ public class TuntiNakyma extends AppCompatActivity {
         ArrayList<Uni> data = gson.fromJson(json, type);
         numero.setText(data.get(0).getHappines());
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: ");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: ");
+    }
+
 }
