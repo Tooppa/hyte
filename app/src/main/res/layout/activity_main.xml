@@ -12,12 +12,12 @@
         android:layout_height="35dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
+        android:background="@null"
         android:scaleType="centerInside"
-        android:src="@drawable/remove"
+        android:src="@drawable/minus"
         app:layout_constraintBottom_toBottomOf="@+id/tunnit"
         app:layout_constraintEnd_toStartOf="@+id/tunnit"
-        app:layout_constraintTop_toTopOf="@+id/tunnit"
-        android:background="@null"/>
+        app:layout_constraintTop_toTopOf="@+id/tunnit" />
 
     <Button
         android:id="@+id/tallenna"
@@ -107,7 +107,7 @@
         android:background="@null"
         android:cropToPadding="false"
         android:scaleType="centerInside"
-        android:src="@drawable/plusbutton"
+        android:src="@drawable/plus"
         app:layout_constraintBottom_toBottomOf="@+id/tunnit"
         app:layout_constraintStart_toEndOf="@+id/tunnit"
         app:layout_constraintTop_toTopOf="@+id/tunnit" />

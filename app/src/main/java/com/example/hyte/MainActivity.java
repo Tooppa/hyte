@@ -26,7 +26,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     int radValue;
     Counter counter;
     TextView tunnit;
+    ArrayList<Uni> array;
     public static final String EXTRA = "";
     public static final String TAG = "logging MainActivity";
 
@@ -65,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         SharedPreferences shared = getSharedPreferences("HYTE", MODE_PRIVATE);
         final SharedPreferences.Editor editor = shared.edit();
-        final ArrayList<Uni> array = new ArrayList<>();
         r1 = findViewById(R.id.rad1);
         r2 = findViewById(R.id.rad2);
         r3 = findViewById(R.id.rad3);
@@ -75,8 +77,18 @@ public class MainActivity extends AppCompatActivity {
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
         final ListView list = findViewById(R.id.listview);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
-        list.setAdapter(adapter);
+        if(shared == null){
+            array = new ArrayList<>();
+            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
+            list.setAdapter(adapter);
+        }else{
+            Gson gson = new Gson();
+            String json = shared.getString("Uni", null);
+            Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
+            array = gson.fromJson(json, type);
+            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
+            list.setAdapter(adapter);
+        }
 
 
 
@@ -117,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(r5.getId() == rGroup.getCheckedRadioButtonId()) {
                     radValue = 5;
                 }
-                Uni uni = new Uni((counter.getVar()/100), radValue);
+                Uni uni = new Uni((counter.getVar()/100), radValue, counter.getMinutes(), counter.getHours());
                 array.add(uni);
                 Gson gson = new Gson();
                 String json = gson.toJson(array);

@@ -10,13 +10,15 @@ public class Uni {
 
     private double time;
     private int happines;
+    private String minutes;
+    private String hours;
     private Date date;
     private String day;
     private String month;
     private String year;
 
 
-    public Uni(double time, int happines) {
+    public Uni(double time, int happines, String minutes, String hours) {
         this.time = time;
         this.happines = happines;
         this.date = Calendar.getInstance().getTime();
@@ -26,6 +28,8 @@ public class Uni {
         this.month = simpleMonth.format(date);
         SimpleDateFormat simpleYear = new SimpleDateFormat("yyyy");
         this.year = simpleYear.format(date);
+        this.minutes = minutes;
+        this.hours = hours;
     }
 
     public String getHappines() {
@@ -56,7 +60,7 @@ public class Uni {
     }
 
     public String toString(){
-        return this.time + " " + this.happines;
+        String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines;
+        return lista;
     }
-
 }
