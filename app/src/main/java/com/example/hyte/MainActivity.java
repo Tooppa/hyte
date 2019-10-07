@@ -34,12 +34,15 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     RadioButton r1, r2, r3, r4, r5;
+    ImageButton plus, minus, plus1, minus1;
     RadioGroup rGroup;
     int radValue;
     Counter counter;
     TextView tunnit;
     ArrayList<Uni> array;
     ListView list;
+    SharedPreferences shared;
+    SharedPreferences.Editor editor;
     public static final String EXTRA = "";
     public static final String TAG = "logging MainActivity";
 
@@ -67,13 +70,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_main);
-        SharedPreferences shared = getSharedPreferences("HYTE", MODE_PRIVATE);
-        final SharedPreferences.Editor editor = shared.edit();
+        shared = getSharedPreferences("HYTE", MODE_PRIVATE);
+        editor = shared.edit();
         r1 = findViewById(R.id.rad1);
         r2 = findViewById(R.id.rad2);
         r3 = findViewById(R.id.rad3);
         r4 = findViewById(R.id.rad4);
         r5 = findViewById(R.id.rad5);
+        plus = findViewById(R.id.plus);
+        plus1 = findViewById(R.id.plus1h);
+        minus = findViewById(R.id.minus);
+        minus1 = findViewById(R.id.minus1h);
         rGroup = findViewById(R.id.radGroup);
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
@@ -91,9 +98,7 @@ public class MainActivity extends AppCompatActivity {
             list.setAdapter(adapter);
         }
 
-
-
-        final ImageButton plus = findViewById(R.id.plus); // onclick listener for all buttons
+        // onclick listener for all buttons
         plus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -101,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                 tunnit.setText(counter.getHourAndMinute());
             }
         });
-        final ImageButton minus = findViewById(R.id.minus);
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 tunnit.setText(counter.getHourAndMinute());
             }
         });
-        final ImageButton plus1 = findViewById(R.id.plus1h);
         plus1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -117,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 tunnit.setText(counter.getHourAndMinute());
             }
         });
-        final ImageButton minus1 = findViewById(R.id.minus1h);
         minus1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
                 tunnit.setText(counter.getHourAndMinute());
             }
         });
-
         Button tallenna = findViewById(R.id.tallenna);
         tallenna.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 String json = gson.toJson(array);
                 editor.putString("Uni", json);
                 editor.commit();
-                //GlobalArray.getInstance().addToArray(uni);
                 list.invalidateViews();
             }
         });
@@ -174,11 +174,15 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK) {
                 int result = data.getIntExtra("result",0);
                 array.remove(result);
+                Gson gson = new Gson();
+                String json = gson.toJson(array);
+                editor.putString("Uni", json);
                 list.invalidateViews();
+                editor.commit();
             }
         }
 
-    }//onActivityResult
+    }
 
     @Override
     protected void onPause() {

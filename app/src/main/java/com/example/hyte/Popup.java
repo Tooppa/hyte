@@ -21,7 +21,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Popup extends Activity {
-    public static final String EXTRA ="";
+    private static final String EXTRA ="";
+    private int i;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +42,14 @@ public class Popup extends Activity {
         getWindow().setLayout((int)(width*.6),(int)(height*.4)); //The size of the popup window relative to display size
 
         Bundle b = getIntent().getExtras();
-        final int i = b.getInt(MainActivity.EXTRA,0); //telling the activity which ListView element was clicked on
+        i = b.getInt(MainActivity.EXTRA,0); //telling the activity which ListView element was clicked on
 
         Button delete = findViewById(R.id.buttonDelete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra(EXTRA,i);
+                returnIntent.putExtra("result",i);
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
