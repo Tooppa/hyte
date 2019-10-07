@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     Counter counter;
     TextView tunnit;
     ArrayList<Uni> array;
+    ListView list;
     public static final String EXTRA = "";
     public static final String TAG = "logging MainActivity";
 
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         rGroup = findViewById(R.id.radGroup);
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
-        final ListView list = findViewById(R.id.listview);
+        list = findViewById(R.id.listview);
         Gson gson = new Gson();
         String json = shared.getString("Uni", null);
         if(json == null){ // checks that shared hasnt been created if not creates new arraylist
@@ -160,13 +161,24 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent nextactivity = new Intent(MainActivity.this,Popup.class);
                 nextactivity.putExtra(EXTRA, i);
-                startActivity(nextactivity);
+                startActivityForResult(nextactivity,1);
 
             }
         });
-
-
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                int result = data.getIntExtra("result",0);
+                array.remove(result);
+                list.invalidateViews();
+            }
+        }
+
+    }//onActivityResult
 
     @Override
     protected void onPause() {
@@ -179,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.d(TAG, "onResume: ");
     }
-    
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -204,3 +216,4 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onRestart: ");
     }
 }
+
