@@ -182,8 +182,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-    }
-
+    } //Retrieves delete intent from popup and deletes arraylist element
     @Override
     protected void onPause() {
         super.onPause();
