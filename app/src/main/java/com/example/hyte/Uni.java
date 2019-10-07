@@ -60,7 +60,7 @@ public class Uni {
     }
 
     public String toString(){
-        String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines;
+        String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines + " " + getSimpleDate();
         return lista;
     }
 }
