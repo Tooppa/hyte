@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ public class Popup extends Activity {
         Bundle b = getIntent().getExtras();
         int i = b.getInt(MainActivity.EXTRA,0); //telling the activity which ListView element was clicked on
 
-        ((TextView)findViewById(R.id.textViewTime)).setText("nukuttu "+data.get(i).getTime()+" tuntia"); //setting the time
+        ((TextView)findViewById(R.id.textViewTime)).setText("Nukuttu "+data.get(i).getTime()+" tuntia"); //setting the time
         ((TextView)findViewById(R.id.textViewHappiness)).setText("Unenlaatu "+data.get(i).getHappines()); //and happiness
 
         if (data.get(i).getTimeDouble() > 7.0 && data.get(i).getHappinesInt() >= 3) {
@@ -46,4 +47,5 @@ public class Popup extends Activity {
             ((ImageView)findViewById(R.id.imageViewThumbUpDown)).setImageResource(R.drawable.thumbsdown);
         }
     }
+
 }
