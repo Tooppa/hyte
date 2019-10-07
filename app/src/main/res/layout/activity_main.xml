@@ -7,11 +7,39 @@
     tools:context=".MainActivity">
 
     <ImageButton
+        android:id="@+id/plus1h"
+        android:layout_width="56dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:adjustViewBounds="false"
+        android:background="@null"
+        android:cropToPadding="false"
+        android:scaleType="centerInside"
+        android:src="@drawable/plus_1"
+        app:layout_constraintBottom_toBottomOf="@+id/tunnit"
+        app:layout_constraintStart_toEndOf="@+id/plus"
+        app:layout_constraintTop_toTopOf="@+id/tunnit" />
+
+    <ImageButton
+        android:id="@+id/minus1h"
+        android:layout_width="56dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@drawable/minus_1"
+        app:layout_constraintBottom_toBottomOf="@+id/tunnit"
+        app:layout_constraintEnd_toStartOf="@+id/minus"
+        app:layout_constraintTop_toTopOf="@+id/tunnit" />
+
+    <ImageButton
         android:id="@+id/minus"
         android:layout_width="56dp"
         android:layout_height="35dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@null"
         android:scaleType="centerInside"
         android:src="@drawable/minus"
@@ -99,10 +127,10 @@
 
     <ImageButton
         android:id="@+id/plus"
-        android:layout_width="57dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
+        android:layout_width="56dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:adjustViewBounds="false"
         android:background="@null"
         android:cropToPadding="false"

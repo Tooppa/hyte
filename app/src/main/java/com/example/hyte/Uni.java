@@ -3,7 +3,7 @@ package com.example.hyte;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
+import java.util.Locale;
 
 
 public class Uni {
@@ -16,6 +16,7 @@ public class Uni {
     private String day;
     private String month;
     private String year;
+    private String dateFormat;
 
 
     public Uni(double time, int happines, String minutes, String hours) {
@@ -28,6 +29,8 @@ public class Uni {
         this.month = simpleMonth.format(date);
         SimpleDateFormat simpleYear = new SimpleDateFormat("yyyy");
         this.year = simpleYear.format(date);
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyy");
+        this.dateFormat = simpleDate.format(date);
         this.minutes = minutes;
         this.hours = hours;
     }
@@ -46,8 +49,7 @@ public class Uni {
         return this.happines;
     }
     public String getSimpleDate() { //tulostaa päivän muodossa dd/MM/yyyy
-        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyy");
-        return simpleDate.format(date);
+        return this.dateFormat;
     }
     public String getDay() {
         return day;
@@ -60,7 +62,7 @@ public class Uni {
     }
 
     public String toString(){
-        String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines + " " + getSimpleDate();
+        String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines + " " + this.dateFormat;
         return lista;
     }
 }

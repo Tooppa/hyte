@@ -77,22 +77,22 @@ public class MainActivity extends AppCompatActivity {
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
         final ListView list = findViewById(R.id.listview);
-        if(shared == null){
+        if(shared.getString("HYTE", null) == null){
             array = new ArrayList<>();
-            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
+            ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, array);
             list.setAdapter(adapter);
         }else{
             Gson gson = new Gson();
             String json = shared.getString("Uni", null);
             Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
             array = gson.fromJson(json, type);
-            ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, array);
+            ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, array);
             list.setAdapter(adapter);
         }
 
 
 
-        ImageButton plus = findViewById(R.id.plus);
+        final ImageButton plus = findViewById(R.id.plus);
         plus.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -105,6 +105,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 counter.subtract();
+                tunnit.setText(counter.getHourAndMinute());
+            }
+        });
+        final ImageButton plus1 = findViewById(R.id.plus1h);
+        plus1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                counter.addHour();
+                tunnit.setText(counter.getHourAndMinute());
+            }
+        });
+        final ImageButton minus1 = findViewById(R.id.minus1h);
+        minus1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                counter.subtractHour();
                 tunnit.setText(counter.getHourAndMinute());
             }
         });
