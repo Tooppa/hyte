@@ -19,6 +19,9 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.YEAR;
+
 public class TuntiNakyma extends AppCompatActivity {
     public static final String TAG = "logging TuntiNakyma";
 
@@ -34,7 +37,7 @@ public class TuntiNakyma extends AppCompatActivity {
         String json = shared.getString("Uni", null);
         Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
         ArrayList<Uni> data = gson.fromJson(json, type);
-        numero.setText(data.get(0).getHappines());
+        numero.setText(data.get(0).getDay()+data.get(0).getMonth()+data.get(0).getYear());
     }
     @Override
     protected void onPause() {
