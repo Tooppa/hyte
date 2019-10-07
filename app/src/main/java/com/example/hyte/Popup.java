@@ -42,9 +42,9 @@ public class Popup extends Activity {
 
         Bundle b = getIntent().getExtras();
         final int i = b.getInt(MainActivity.EXTRA,0); //telling the activity which ListView element was clicked on
-
+        /*
         Button delete = findViewById(R.id.buttonDelete);
-        delete.setOnClickListener(new View.OnClickListener() {
+        delete.setOnClickListener(new View.OnClickListener() { //sending delete intent to mainactivity. from stackoverflow user Nishant
             @Override
             public void onClick(View view) {
                 Intent returnIntent = new Intent();
@@ -53,6 +53,8 @@ public class Popup extends Activity {
                 finish();
             }
         });
+
+         */
 
         ((TextView)findViewById(R.id.textViewTime)).setText("Nukuttu "+data.get(i).getTime()+" tuntia"); //setting the time
         ((TextView)findViewById(R.id.textViewHappiness)).setText("Unenlaatu "+data.get(i).getHappines()); //and happiness

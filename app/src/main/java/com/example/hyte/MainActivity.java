@@ -166,8 +166,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /*
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //from stackoverflow user Nishant
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
@@ -178,8 +179,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-    }//onActivityResult
-
+    } //Retrieves delete intent from popup and deletes arraylist element
+    */
     @Override
     protected void onPause() {
         super.onPause();
