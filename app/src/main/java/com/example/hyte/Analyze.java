@@ -22,8 +22,6 @@ public class Analyze {
     private Context mContext;
     private double averageHours;
     private double averageHappiness;
-    private double summaTime;
-    private double summaHappiness;
     private SharedPreferences shared;
     private Gson gson;
     private String json;
@@ -32,55 +30,27 @@ public class Analyze {
 
     /**
      * Alustetaan muuttujat
-     * haetaan ArrayList SharedPreferenceistä
      */
-    public Analyze() {
-        this.summaTime =0;
-        this.averageHours=0;
-        this.averageHappiness=0;
-        shared = mContext.getSharedPreferences("HYTE", MODE_PRIVATE);
-        gson = new Gson();
-        json = shared.getString("Uni", null);
-        type = new TypeToken<ArrayList<Uni>>() {}.getType();
-        data = gson.fromJson(json, type);
+    public Analyze(double averageHours, int averageHappiness) {
+        this.averageHours=averageHours;
+        this.averageHappiness=averageHappiness;
     }
-    /**
-     * Laskee keskimääräisen unimäärän
-     * @return keskimääräisen unimäärän tunteina
-     */
-    public double getAverageHours() {
-        for (int i = data.size(); i>0;i-- ) {
-            this.summaTime = summaTime + data.get(i).getTimeDouble();
-        }
-        this.averageHours = summaTime/data.size();
-        return averageHours;
-    }
-    /**
-     * laskee keskimääräisen unenlaadun
-     * @return keskimääräinen unenlaatu (1-5)
-     */
-    public double getAverageHappiness() {
-        for (int i = data.size(); i>0;i-- ) {
-            this.summaHappiness = summaHappiness + data.get(i).getHappinesInt();
-        }
-        this.averageHappiness = summaHappiness/data.size();
-        return averageHappiness;
-    }
+
     /**
      * Käyttää keskimääräistä unenlaatua ja määrää ja antaa yksinkertaisen analyysin
      * @return yksinkertainen analyysi
      */
     public String getAnalyze() {
-        if (getAverageHappiness() < 3) {
+        if (this.averageHappiness < 3) {
             return "Keskimääräinen unenlaatusi on huonoa.";
         }
-        if (getAverageHours() > 10) {
+        if (this.averageHours > 10) {
             return "Nukut liikaa";
         }
-        if (getAverageHappiness()>= 3 && getAverageHours() <= 7) {
+        if (this.averageHappiness>= 3 && this.averageHours <= 7) {
             return "Nukut hyvin";
         }
-        if (getAverageHours()<7) {
+        if (this.averageHours <7) {
             return "Nukut liian vähän";
         }
         else {
