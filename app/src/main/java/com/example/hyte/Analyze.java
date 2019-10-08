@@ -31,7 +31,7 @@ public class Analyze {
     /**
      * Alustetaan muuttujat
      */
-    public Analyze(double averageHours, int averageHappiness) {
+    public Analyze(double averageHours, double averageHappiness) {
         this.averageHours=averageHours;
         this.averageHappiness=averageHappiness;
     }

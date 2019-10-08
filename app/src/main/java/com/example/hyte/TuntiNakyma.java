@@ -44,7 +44,7 @@ public class TuntiNakyma extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_tunti_nakyma);
-        numero = findViewById(R.id.numero);
+        numero = findViewById(R.id.analyysi);
         barChart = findViewById(R.id.barGraph);
         shared = getSharedPreferences("HYTE", MODE_PRIVATE);
         gson = new Gson();
@@ -65,29 +65,20 @@ public class TuntiNakyma extends AppCompatActivity {
         barChart.setScaleXEnabled(true);
         barChart.invalidate();
 
+        int summaTime = 0;
+        double averageHours = 0;
+        int summaHappiness = 0;
+        double averageHappiness = 0;
+        for (int i = data.size(); i>0;i-- ) {
+            summaTime += data.get(i).getTimeDouble();
+        }
+        averageHours = summaTime/data.size();
 
-/*
-        ArrayList<BarEntry> barEntry = new ArrayList<>();
-        barEntry.add(new BarEntry(4f,0));
-        barEntry.add(new BarEntry(4f,1));
-        barEntry.add(new BarEntry(4f,2));
-        barEntry.add(new BarEntry(4f,3));
-        barEntry.add(new BarEntry(4f,4));
-        barEntry.add(new BarEntry(4f,5));
-        barEntry.add(new BarEntry(4f,6));
-        BarDataSet barData = new BarDataSet(barEntry, "days");
-        ArrayList<String> dates = new ArrayList<>();
-        dates.add("Maanatai");
-        dates.add("Tiistai");
-        dates.add("Keskiviikko");
-        dates.add("Torstai");
-        dates.add("Perjantai");
-        dates.add("Lauantai");
-        dates.add("Sunnutai");
-        BarData graph = new BarData();
-        barChart.setData(graph);
-
- */
+        for (int i = data.size(); i>0;i-- ) {
+            summaHappiness += data.get(i).getHappinesInt();
+        }
+        averageHappiness = summaHappiness/data.size();
+        Analyze analyysi = new Analyze(averageHours, averageHappiness);
     }
     @Override
     protected void onPause() {
