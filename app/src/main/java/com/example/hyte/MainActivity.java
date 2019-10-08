@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //Retrieves delete intent from popup and deletes arraylist element
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-    } //Retrieves delete intent from popup and deletes arraylist element
+    }
     @Override
     protected void onPause() {
         super.onPause();

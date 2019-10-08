@@ -1,3 +1,4 @@
+
 package com.example.hyte;
 
 import android.content.Context;
@@ -16,7 +17,8 @@ public class Analyze {
     private Context mContext;
     private double averageHours;
     private double averageHappiness;
-    private double summa;
+    private double summaTime;
+    private double summaHappiness;
     private SharedPreferences shared;
     private Gson gson;
     private String json;
@@ -24,7 +26,7 @@ public class Analyze {
     private ArrayList<Uni> data;
 
     public Analyze() {
-        this.summa =0;
+        this.summaTime =0;
         this.averageHours=0;
         this.averageHappiness=0;
         shared = mContext.getSharedPreferences("HYTE", MODE_PRIVATE);
@@ -34,12 +36,36 @@ public class Analyze {
         data = gson.fromJson(json, type);
     }
     public double getAverageHours() {
-
         for (int i = data.size(); i>0;i-- ) {
-            this.summa = summa + data.get(i).getTimeDouble();
+            this.summaTime = summaTime + data.get(i).getTimeDouble();
         }
-        this.averageHours = summa/data.size();
+        this.averageHours = summaTime/data.size();
         return averageHours;
+    }
+    public double getAverageHappiness() {
+        for (int i = data.size(); i>0;i-- ) {
+            this.summaHappiness = summaHappiness + data.get(i).getHappinesInt();
+        }
+        this.averageHappiness = summaHappiness/data.size();
+        return averageHappiness;
+    }
+    public String getAnalyze() {
+        if (getAverageHappiness() < 3) {
+            return "Keskimääräinen unenlaatusi on huonoa.";
+        }
+        if (getAverageHours() > 10) {
+            return "Nukut liikaa";
+        }
+        if (getAverageHappiness()>= 3 && getAverageHours() <= 7) {
+            return "Nukut hyvin";
+        }
+        if (getAverageHours()<7) {
+            return "Nukut liian vähän";
+        }
+        else {
+            return "";
+        }
+
     }
 
 }
