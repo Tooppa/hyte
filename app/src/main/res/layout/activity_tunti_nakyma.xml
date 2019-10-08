@@ -6,6 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".TuntiNakyma">
 
+    <TextView
+        android:id="@+id/happinesKeski"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uniKeski" />
+
+    <TextView
+        android:id="@+id/analyysi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/happinesKeski" />
+
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barGraph"
         android:layout_width="0dp"
@@ -16,7 +36,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
 
     <TextView
-        android:id="@+id/analyysi"
+        android:id="@+id/uniKeski"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

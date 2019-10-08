@@ -2,23 +2,15 @@ package com.example.hyte;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -26,13 +18,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Calendar.DAY_OF_MONTH;
-import static java.util.Calendar.YEAR;
-
 public class TuntiNakyma extends AppCompatActivity {
     public static final String TAG = "logging TuntiNakyma";
     BarChart barChart;
-    TextView analyysiText;
+    TextView analyysiText, uniKeski, happinesKeski;
     SharedPreferences shared;
     Gson gson;
     String json;
@@ -45,6 +34,8 @@ public class TuntiNakyma extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_tunti_nakyma);
         analyysiText = findViewById(R.id.analyysi);
+        uniKeski = findViewById(R.id.uniKeski);
+        happinesKeski = findViewById(R.id.happinesKeski);
         barChart = findViewById(R.id.barGraph);
         shared = getSharedPreferences("HYTE", MODE_PRIVATE);
         gson = new Gson();
@@ -65,9 +56,9 @@ public class TuntiNakyma extends AppCompatActivity {
         barChart.setScaleXEnabled(true);
         barChart.invalidate();
 
-        int summaTime = 0;
+        double summaTime = 0;
         double averageHours = 0;
-        int summaHappiness = 0;
+        double summaHappiness = 0;
         double averageHappiness = 0;
         for (int i = 0; i < data.size(); i++) {
             summaTime += data.get(i).getTimeDouble();
@@ -80,6 +71,8 @@ public class TuntiNakyma extends AppCompatActivity {
         averageHappiness = summaHappiness/data.size();
         Analyze analyysi = new Analyze(averageHours, averageHappiness);
         analyysiText.setText(analyysi.getAnalyze());
+        uniKeski.setText(String.valueOf(averageHours));
+        happinesKeski.setText(String.valueOf(averageHappiness));
     }
     @Override
     protected void onPause() {
