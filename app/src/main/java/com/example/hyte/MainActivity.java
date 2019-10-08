@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) { //creates new intent when navbar button is clicked
         switch (item.getItemId()){
             case R.id.forwardB:
-                Intent intent = new Intent(getBaseContext(), TuntiNakyma.class); //creates new intent when navbar button is clicked
+                Intent intent = new Intent(getBaseContext(), TuntiNakyma.class);
                 startActivity(intent);
                 return true;
                 default:
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(r1.getId() == rGroup.getCheckedRadioButtonId()) {
+                if(r1.getId() == rGroup.getCheckedRadioButtonId()) { //checks what button is pressed gives it a int
                     radValue = 1;
                 }
                 else if(r2.getId() == rGroup.getCheckedRadioButtonId()) {

@@ -2,11 +2,6 @@ package com.example.hyte;
 
 import static java.lang.String.valueOf;
 
-/**
- * Luokka sisältää koodia, joka lisää tai vähentää minuutteja riippuen käyttäjä inputista
- * @version 2.0 8.10.2019
- * @author Rush B
- */
 public class Counter {
     private int value;
 
