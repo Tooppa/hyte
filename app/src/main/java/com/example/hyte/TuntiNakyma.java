@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -24,7 +25,7 @@ import static java.util.Calendar.YEAR;
 
 public class TuntiNakyma extends AppCompatActivity {
     public static final String TAG = "logging TuntiNakyma";
-
+    BarChart barChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +33,14 @@ public class TuntiNakyma extends AppCompatActivity {
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_tunti_nakyma);
         TextView numero = findViewById(R.id.numero);
+        barChart = findViewById(R.id.barGraph);
         SharedPreferences shared = getSharedPreferences("HYTE", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = shared.getString("Uni", null);
         Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
         ArrayList<Uni> data = gson.fromJson(json, type);
-        numero.setText(data.get(0).getDay()+data.get(0).getMonth()+data.get(0).getYear());
+
+
     }
     @Override
     protected void onPause() {
