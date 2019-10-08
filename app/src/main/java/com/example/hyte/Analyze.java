@@ -15,7 +15,7 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * Luokka sisältää unimäärän analyysiin liittyviä metodeja
  * @author Rush B
- * @version 1.0 8.10.2019
+ * @version 2.0 8.10.2019
  */
 public class Analyze {
 
@@ -47,7 +47,7 @@ public class Analyze {
         if (this.averageHours > 10) {
             return "Nukut liikaa";
         }
-        if (this.averageHappiness>= 3 && this.averageHours <= 7) {
+        if (this.averageHappiness >= 3 && this.averageHours >= 7) {
             return "Nukut hyvin";
         }
         if (this.averageHours <7) {

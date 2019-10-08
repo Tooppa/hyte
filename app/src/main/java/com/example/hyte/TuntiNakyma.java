@@ -32,7 +32,7 @@ import static java.util.Calendar.YEAR;
 public class TuntiNakyma extends AppCompatActivity {
     public static final String TAG = "logging TuntiNakyma";
     BarChart barChart;
-    TextView numero;
+    TextView analyysiText;
     SharedPreferences shared;
     Gson gson;
     String json;
@@ -44,7 +44,7 @@ public class TuntiNakyma extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_tunti_nakyma);
-        numero = findViewById(R.id.analyysi);
+        analyysiText = findViewById(R.id.analyysi);
         barChart = findViewById(R.id.barGraph);
         shared = getSharedPreferences("HYTE", MODE_PRIVATE);
         gson = new Gson();
@@ -79,6 +79,7 @@ public class TuntiNakyma extends AppCompatActivity {
         }
         averageHappiness = summaHappiness/data.size();
         Analyze analyysi = new Analyze(averageHours, averageHappiness);
+        analyysiText.setText(analyysi.getAnalyze());
     }
     @Override
     protected void onPause() {
