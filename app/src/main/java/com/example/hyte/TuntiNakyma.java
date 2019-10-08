@@ -37,7 +37,7 @@ public class TuntiNakyma extends AppCompatActivity {
         String json = shared.getString("Uni", null);
         Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
         ArrayList<Uni> data = gson.fromJson(json, type);
-        numero.setText(data.get(0).getDay()+data.get(0).getMonth()+data.get(0).getYear());
+        //numero.setText(data.get(0).getDay()+data.get(0).getMonth()+data.get(0).getYear());
     }
     @Override
     protected void onPause() {
