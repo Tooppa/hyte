@@ -176,6 +176,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Unen voi lisätä vain kerran päivässä",
                             Toast.LENGTH_LONG).show();
 
+                }else{
+                    array.add(uni);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(array);
+                    editor.putString("Uni", json);
+                    editor.commit();
+                    list.invalidateViews();
                 }
             }
         });
