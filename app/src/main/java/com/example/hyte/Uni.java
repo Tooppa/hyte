@@ -60,12 +60,14 @@ public class Uni {
     public String getYear() {
         return year;
     }
+    //from stackoverflow.com user JDGuide
     public String getWeekDay() {
         Calendar c = Calendar.getInstance();
         c.setTime(this.date);
         String weekDay = new SimpleDateFormat("EE").format(date);
         return weekDay;
     }
+    //From stackoverflow.com user Bozho
     public int getWeekDayInt() {
         Calendar c = Calendar.getInstance();
         c.setTime(this.date);

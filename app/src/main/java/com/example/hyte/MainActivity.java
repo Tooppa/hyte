@@ -31,6 +31,8 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import static java.lang.String.valueOf;
+
 
 public class MainActivity extends AppCompatActivity {
     RadioButton r1, r2, r3, r4, r5;
@@ -72,19 +74,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         shared = getSharedPreferences("HYTE", MODE_PRIVATE);
         editor = shared.edit();
+
         r1 = findViewById(R.id.rad1);
         r2 = findViewById(R.id.rad2);
         r3 = findViewById(R.id.rad3);
         r4 = findViewById(R.id.rad4);
         r5 = findViewById(R.id.rad5);
+
         plus = findViewById(R.id.plus);
         plus1 = findViewById(R.id.plus1h);
+
         minus = findViewById(R.id.minus);
         minus1 = findViewById(R.id.minus1h);
+
         rGroup = findViewById(R.id.radGroup);
         counter = new Counter();
         tunnit = findViewById(R.id.tunnit);
         list = findViewById(R.id.listview);
+
         Gson gson = new Gson();
         String json = shared.getString("Uni", null);
         if(json == null){ // checks that shared hasnt been created if not creates new arraylist
@@ -104,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 counter.add();
                 tunnit.setText(counter.getHourAndMinute());
+                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         minus.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter.subtract();
                 tunnit.setText(counter.getHourAndMinute());
+                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         plus1.setOnClickListener(new View.OnClickListener(){
@@ -118,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 counter.addHour();
                 tunnit.setText(counter.getHourAndMinute());
+                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         minus1.setOnClickListener(new View.OnClickListener() {
@@ -125,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter.subtractHour();
                 tunnit.setText(counter.getHourAndMinute());
+                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         Button tallenna = findViewById(R.id.tallenna);
@@ -147,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 else if(r5.getId() == rGroup.getCheckedRadioButtonId()) {
                     radValue = 5;
                 }
-                Uni uni = new Uni((counter.getVar()/100), radValue, counter.getMinutes(), counter.getHours());
+                Uni uni = new Uni((counter.getTime()), radValue, counter.getMinutes(), counter.getHours());
                 array.add(uni);
                 Gson gson = new Gson();
                 String json = gson.toJson(array);
@@ -156,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
                 list.invalidateViews();
             }
         });
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() { //tapping the ListView opens up a popup window
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
