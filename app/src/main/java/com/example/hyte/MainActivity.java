@@ -24,12 +24,16 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import static java.lang.String.valueOf;
 
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tunnit;
     ArrayList<Uni> array;
     ListView list;
+    SimpleDateFormat simpleDate;
+    Date date;
     SharedPreferences shared;
     SharedPreferences.Editor editor;
     public static final String EXTRA = "";
@@ -74,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         shared = getSharedPreferences("HYTE", MODE_PRIVATE);
         editor = shared.edit();
+
+        simpleDate = new SimpleDateFormat("dd/MM/yyy");
+        date = Calendar.getInstance().getTime();
 
         r1 = findViewById(R.id.rad1);
         r2 = findViewById(R.id.rad2);
@@ -155,12 +164,19 @@ public class MainActivity extends AppCompatActivity {
                     radValue = 5;
                 }
                 Uni uni = new Uni((counter.getTime()), radValue, counter.getMinutes(), counter.getHours());
-                array.add(uni);
-                Gson gson = new Gson();
-                String json = gson.toJson(array);
-                editor.putString("Uni", json);
-                editor.commit();
-                list.invalidateViews();
+                int i = array.size() - 1;
+                if(i == -1){
+                    array.add(uni);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(array);
+                    editor.putString("Uni", json);
+                    editor.commit();
+                    list.invalidateViews();
+                }else if(array.get(i).getSimpleDate().equals(simpleDate.format(date))){
+                    Toast.makeText(MainActivity.this, "Unen voi lisätä vain kerran päivässä",
+                            Toast.LENGTH_LONG).show();
+
+                }
             }
         });
 
