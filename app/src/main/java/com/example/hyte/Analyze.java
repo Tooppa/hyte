@@ -10,10 +10,19 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+import java.io.*;
+import java.util.*;
+
 
 import static android.content.Context.MODE_PRIVATE;
 
+/**
+ * Luokka sisältää unimäärän analyysiin liittyviä metodeja
+ * @author Rush B
+ * @version 1.0 8.10.2019
+ */
 public class Analyze {
+
     private Context mContext;
     private double averageHours;
     private double averageHappiness;
@@ -25,6 +34,10 @@ public class Analyze {
     private Type type;
     private ArrayList<Uni> data;
 
+    /**
+     * Alustetaan muuttujat
+     * haetaan ArrayList SharedPreferenceistä
+     */
     public Analyze() {
         this.summaTime =0;
         this.averageHours=0;
@@ -35,6 +48,10 @@ public class Analyze {
         type = new TypeToken<ArrayList<Uni>>() {}.getType();
         data = gson.fromJson(json, type);
     }
+    /**
+     * Laskee keskimääräisen unimäärän
+     * @return keskimääräisen unimäärän tunteina
+     */
     public double getAverageHours() {
         for (int i = data.size(); i>0;i-- ) {
             this.summaTime = summaTime + data.get(i).getTimeDouble();
@@ -42,6 +59,10 @@ public class Analyze {
         this.averageHours = summaTime/data.size();
         return averageHours;
     }
+    /**
+     * laskee keskimääräisen unenlaadun
+     * @return keskimääräinen unenlaatu (1-5)
+     */
     public double getAverageHappiness() {
         for (int i = data.size(); i>0;i-- ) {
             this.summaHappiness = summaHappiness + data.get(i).getHappinesInt();
@@ -49,6 +70,10 @@ public class Analyze {
         this.averageHappiness = summaHappiness/data.size();
         return averageHappiness;
     }
+    /**
+     * Käyttää keskimääräistä unenlaatua ja määrää ja antaa yksinkertaisen analyysin
+     * @return yksinkertainen analyysi
+     */
     public String getAnalyze() {
         if (getAverageHappiness() < 3) {
             return "Keskimääräinen unenlaatusi on huonoa.";

@@ -66,6 +66,12 @@ public class Uni {
         String weekDay = new SimpleDateFormat("EE").format(date);
         return weekDay;
     }
+    public int getWeekDayInt() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.date);
+        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+        return dayOfWeek;
+    }
 
     public String toString(){
         String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines + " " + this.dateFormat;
