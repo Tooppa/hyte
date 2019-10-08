@@ -13,6 +13,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -26,21 +32,62 @@ import static java.util.Calendar.YEAR;
 public class TuntiNakyma extends AppCompatActivity {
     public static final String TAG = "logging TuntiNakyma";
     BarChart barChart;
+    TextView numero;
+    SharedPreferences shared;
+    Gson gson;
+    String json;
+    Type type;
+    ArrayList<Uni> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_tunti_nakyma);
-        TextView numero = findViewById(R.id.numero);
+        numero = findViewById(R.id.numero);
         barChart = findViewById(R.id.barGraph);
-        SharedPreferences shared = getSharedPreferences("HYTE", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = shared.getString("Uni", null);
-        Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
-        ArrayList<Uni> data = gson.fromJson(json, type);
+        shared = getSharedPreferences("HYTE", MODE_PRIVATE);
+        gson = new Gson();
+        json = shared.getString("Uni", null);
+        type = new TypeToken<ArrayList<Uni>>(){}.getType();
+        data = gson.fromJson(json, type);
+
+        List<BarEntry> entries = new ArrayList<BarEntry>();
+        for (Uni data : data) {
+            // turn your data into Entry objects
+            entries.add(new BarEntry(data.getWeekDayInt(), data.getTimeFloat()));
+        }
+        BarDataSet dataSet = new BarDataSet(entries, "Label"); // add entries to dataset
+        BarData lineData = new BarData(dataSet);
+        barChart.setData(lineData);
+        barChart.setTouchEnabled(true);
+        barChart.setDragEnabled(true);
+        barChart.setScaleXEnabled(true);
+        barChart.invalidate();
 
 
+/*
+        ArrayList<BarEntry> barEntry = new ArrayList<>();
+        barEntry.add(new BarEntry(4f,0));
+        barEntry.add(new BarEntry(4f,1));
+        barEntry.add(new BarEntry(4f,2));
+        barEntry.add(new BarEntry(4f,3));
+        barEntry.add(new BarEntry(4f,4));
+        barEntry.add(new BarEntry(4f,5));
+        barEntry.add(new BarEntry(4f,6));
+        BarDataSet barData = new BarDataSet(barEntry, "days");
+        ArrayList<String> dates = new ArrayList<>();
+        dates.add("Maanatai");
+        dates.add("Tiistai");
+        dates.add("Keskiviikko");
+        dates.add("Torstai");
+        dates.add("Perjantai");
+        dates.add("Lauantai");
+        dates.add("Sunnutai");
+        BarData graph = new BarData();
+        barChart.setData(graph);
+
+ */
     }
     @Override
     protected void onPause() {

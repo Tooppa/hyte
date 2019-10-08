@@ -45,6 +45,9 @@ public class Uni {
     public double getTimeDouble() {
         return this.time;
     }
+    public float getTimeFloat(){
+        return (float) this.time;
+    }
     public int getHappinesInt() {
         return this.happines;
     }
