@@ -69,12 +69,12 @@ public class TuntiNakyma extends AppCompatActivity {
         double averageHours = 0;
         int summaHappiness = 0;
         double averageHappiness = 0;
-        for (int i = data.size(); i>0;i-- ) {
+        for (int i = 0; i < data.size(); i++) {
             summaTime += data.get(i).getTimeDouble();
         }
         averageHours = summaTime/data.size();
 
-        for (int i = data.size(); i>0;i-- ) {
+        for (int i = 0; i < data.size(); i++) {
             summaHappiness += data.get(i).getHappinesInt();
         }
         averageHappiness = summaHappiness/data.size();
