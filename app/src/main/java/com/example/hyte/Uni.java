@@ -60,6 +60,12 @@ public class Uni {
     public String getYear() {
         return year;
     }
+    public String getWeekDay() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.date);
+        String weekDay = new SimpleDateFormat("EE").format(date);
+        return weekDay;
+    }
 
     public String toString(){
         String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines + " " + this.dateFormat;
