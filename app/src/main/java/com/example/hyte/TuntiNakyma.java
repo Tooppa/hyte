@@ -28,7 +28,6 @@ public class TuntiNakyma extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Analyze analyze = new Analyze
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.activity_tunti_nakyma);
@@ -38,7 +37,7 @@ public class TuntiNakyma extends AppCompatActivity {
         String json = shared.getString("Uni", null);
         Type type = new TypeToken<ArrayList<Uni>>(){}.getType();
         ArrayList<Uni> data = gson.fromJson(json, type);
-        numero.setText(Analyze);
+        numero.setText(data.get(0).getDay()+data.get(0).getMonth()+data.get(0).getYear());
     }
     @Override
     protected void onPause() {
