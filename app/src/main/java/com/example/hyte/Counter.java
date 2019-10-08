@@ -2,11 +2,16 @@ package com.example.hyte;
 
 import static java.lang.String.valueOf;
 
+/**
+ * Yksinkertainen laskuri, johon voi lisätä minuutteja
+ * @version 2.0 8.10
+ * @author Rush B
+ */
 public class Counter {
     private int value;
 
     /**
-     * Asettaa laskurin nollaan
+     * Luo laskurin ja asettaa sen nollaan
      */
     public Counter(){
         this.value = 0;
