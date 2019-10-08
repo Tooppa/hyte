@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 counter.add();
                 tunnit.setText(counter.getHourAndMinute());
-                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         minus.setOnClickListener(new View.OnClickListener() {
@@ -119,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter.subtract();
                 tunnit.setText(counter.getHourAndMinute());
-                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         plus1.setOnClickListener(new View.OnClickListener(){
@@ -127,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 counter.addHour();
                 tunnit.setText(counter.getHourAndMinute());
-                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         minus1.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 counter.subtractHour();
                 tunnit.setText(counter.getHourAndMinute());
-                ((TextView)findViewById(R.id.textViewTime)).setText(counter.getValue());
             }
         });
         Button tallenna = findViewById(R.id.tallenna);
