@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +61,7 @@ public class TuntiNakyma extends AppCompatActivity {
         double averageHours = 0;
         double summaHappiness = 0;
         double averageHappiness = 0;
+        DecimalFormat format = new DecimalFormat("##.00");
         for (int i = 0; i < data.size(); i++) {
             summaTime += data.get(i).getTimeDouble();
         }
@@ -71,8 +73,8 @@ public class TuntiNakyma extends AppCompatActivity {
         averageHappiness = summaHappiness/data.size();
         Analyze analyysi = new Analyze(averageHours, averageHappiness);
         analyysiText.setText(analyysi.getAnalyze());
-        uniKeski.setText(String.valueOf(averageHours));
-        happinesKeski.setText(String.valueOf(averageHappiness));
+        uniKeski.setText(String.valueOf(format.format(averageHours)));
+        happinesKeski.setText(String.valueOf(format.format(averageHappiness)));
     }
     @Override
     protected void onPause() {
