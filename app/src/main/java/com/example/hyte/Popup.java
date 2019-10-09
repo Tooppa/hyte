@@ -39,7 +39,13 @@ public class Popup extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.6),(int)(height*.4)); //The size of the popup window relative to display size
+        if (height > width) {
+            getWindow().setLayout((int)(width*.6),(int)(height*.4)); //The size of the popup window relative to display size
+        } else {
+            getWindow().setLayout((int)(width*.4),(int)(height*.8)); //landscape mode
+        }
+
+
 
         Bundle b = getIntent().getExtras();
         i = b.getInt(MainActivity.EXTRA,0); //telling the activity which ListView element was clicked on
