@@ -96,7 +96,10 @@ public class Uni {
      * Gives the day of month when user input is made
      * @return day of month
      */
-    public String getDay() {
+    public int getDate() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.date);
+        int day = c.get(Calendar.DATE);
         return day;
     }
 
