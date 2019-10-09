@@ -47,7 +47,7 @@ public class TuntiNakyma extends AppCompatActivity {
         List<BarEntry> entries = new ArrayList<BarEntry>();
         for (Uni data : data) {
             // turn your data into Entry objects
-            entries.add(new BarEntry(data.getWeekDayInt(), data.getTimeFloat()));
+            entries.add(new BarEntry(data.getDate(), data.getTimeFloat()));
         }
         BarDataSet dataSet = new BarDataSet(entries, "Label"); // add entries to dataset
         BarData lineData = new BarData(dataSet);

@@ -96,7 +96,10 @@ public class Uni {
      * antaa kuukauden päivän jolloin käyttäjä kirjasi tuloksen
      * @return kuukauden päivä
      */
-    public String getDay() {
+    public int getDate() {
+        Calendar c = Calendar.getInstance();
+        c.setTime(this.date);
+        int day = c.get(Calendar.DATE);
         return day;
     }
 
