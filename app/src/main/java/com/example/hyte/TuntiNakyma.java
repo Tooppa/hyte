@@ -8,6 +8,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -56,6 +58,18 @@ public class TuntiNakyma extends AppCompatActivity {
         barChart.setDragEnabled(true);
         barChart.setScaleXEnabled(true);
         barChart.invalidate();
+        //weeklycoding.com/mpandroidchart-documentation getting the mpandroidchart methods
+        YAxis yAxis = barChart.getAxisLeft();
+        yAxis.setDrawGridLines(false); // no grid lines
+        yAxis.setDrawZeroLine(true); // draw a zero line
+        barChart.getAxisRight().setEnabled(false); // no right axis
+        yAxis.setAxisMinimum(0f);
+        //weeklycoding.com/mpandroidchart-documentation getting the mpandroidchart methods
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextSize(10f);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(false);
 
         double summaTime = 0;
         double averageHours = 0;
@@ -73,8 +87,8 @@ public class TuntiNakyma extends AppCompatActivity {
         averageHappiness = summaHappiness/data.size();
         Analyze analyysi = new Analyze(averageHours, averageHappiness);
         analyysiText.setText(analyysi.getAnalyze());
-        uniKeski.setText(String.valueOf(format.format(averageHours)));
-        happinesKeski.setText(String.valueOf(format.format(averageHappiness)));
+        uniKeski.setText("Keskimäärin nukut " + String.valueOf(format.format(averageHours)) + " tuntia");
+        happinesKeski.setText("Keskimääräinen unenlaatusi on " + String.valueOf(format.format(averageHappiness)) + "/5");
     }
     @Override
     protected void onPause() {
