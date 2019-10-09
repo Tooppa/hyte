@@ -73,8 +73,8 @@ public class TuntiNakyma extends AppCompatActivity {
         averageHappiness = summaHappiness/data.size();
         Analyze analyysi = new Analyze(averageHours, averageHappiness);
         analyysiText.setText(analyysi.getAnalyze());
-        uniKeski.setText(String.valueOf(format.format(averageHours)));
-        happinesKeski.setText(String.valueOf(format.format(averageHappiness)));
+        uniKeski.setText("Keskimääräinen unen pituus "+(format.format(averageHours)));
+        happinesKeski.setText("Keskimääräinen unen laatu "+(format.format(averageHappiness)));
     }
     @Override
     protected void onPause() {
