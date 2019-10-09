@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import static android.content.Context.MODE_PRIVATE;
 
 /**
- * Luokka sisältää unimäärän analyysiin liittyviä metodeja
+ * Class contains method that is used to analyze your sleeping habits
  * @author Rush B
  * @version 2.0 8.10.2019
  */
@@ -29,7 +29,7 @@ public class Analyze {
     private ArrayList<Uni> data;
 
     /**
-     * Alustetaan muuttujat
+     * The variables are initialized
      */
     public Analyze(double averageHours, double averageHappiness) {
         this.averageHours=averageHours;
@@ -37,8 +37,8 @@ public class Analyze {
     }
 
     /**
-     * Käyttää keskimääräistä unenlaatua ja määrää ja antaa yksinkertaisen analyysin
-     * @return yksinkertainen analyysi
+     * Uses the values of averageHours and averageHappiness variables to analyze sleep
+     * @return simple analysis
      */
     public String getAnalyze() {
         if (this.averageHappiness < 3) {

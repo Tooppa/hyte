@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Luokka, jolla tallennetaan uneen liittyvät tiedot
+ * Class where all variables that have to do with sleep are saved into
  * @version 1.0 8.10.2019
  * @author Rush B
  */
@@ -23,11 +23,11 @@ public class Uni {
     private String dateFormat;
 
     /**
-     * Luo uniolion
-     * @param time Nukuttu aika
-     * @param happines unenlaatu (1-5)
-     * @param minutes kokonaisesti tunnista ylijäävät minuutit
-     * @param hours nukuttu aika kokonaisina tunteina
+     * Creates the sleep object
+     * @param time time spent sleeping
+     * @param happines the quality of sleep (1-5)
+     * @param minutes minutes slept
+     * @param hours hours slept
      */
     public Uni(double time, int happines, String minutes, String hours) {
         this.time = time;
@@ -46,80 +46,80 @@ public class Uni {
     }
 
     /**
-     * Antaa käyttäjän asettaman unenlaadun
-     * @return Unenlaatu (1-5)
+     * returns the quality of sleep given by the user
+     * @return quality of sleep (1-5)
      */
     public String getHappines() {
         return String.valueOf(this.happines);
     }
 
     /**
-     * Antaa käyttäjän asettaman unen määrän
-     * @return unen määrä tunteina
+     * returns the time slept given by the user
+     * @return hours slept in hours
      */
     public String getTime() {
         return String.valueOf(this.time);
     }
 
     /**
-     * Antaa nukutut tunnit desimaalilukuna (double)
-     * @return nukutut tunnit (double)
+     * Returns hours slept as a decimal number (double)
+     * @return Hours slept (double)
      */
     public double getTimeDouble() {
         return this.time;
     }
     /**
-     * Antaa nukutut tunnit desimaalilukuna (float) (pylväsdiagrammi tarvitsee luvun floattina)
-     * @return nukutut tunnit (float)
+     * Returns hours slept as a decimal number (float) (bar graph uses float rather than double)
+     * @return hours slept (float)
      */
     public float getTimeFloat(){
         return (float) this.time;
     }
 
     /**
-     * antaa unenlaadun int muodossa
-     * @return unenlaatu int muodossa (1-5)
+     * Quality of sleep in int mode (1-5)
+     * @return Quality of sleep in int (1-5)
      */
     public int getHappinesInt() {
         return this.happines;
     }
 
     /**
-     * tulostaa päivämäärän muodossa dd/MM/yyyy, jolloin käyttäjä kirjasi tuloksen
-     * @return päivämäärä muodossa dd/MM/yyyy
+     * Gives the date in dd/MM/yyyy
+     * @return Date in dd/MM/yyyy
      */
     public String getSimpleDate() {
         return this.dateFormat;
     }
 
     /**
-     * antaa kuukauden päivän jolloin käyttäjä kirjasi tuloksen
-     * @return kuukauden päivä
+     * Gives the day of month when user input is made
+     * @return day of month
      */
     public String getDay() {
         return day;
     }
 
     /**
-     * antaa kuukauden numerona jolloin käyttäjä kirjasi tuloksen
-     * @return kuukausi
+     * Gives the month when user input is made
+     * @return month
      */
     public String getMonth() {
         return month;
     }
 
     /**
-     * Antaa vuoden jolloin käyttäjä kirjasi tuloksen
-     * @return vuosi
+     * Gives the year when the user input is made
+     * @return Year
      */
     public String getYear() {
         return year;
     }
 
     /**
-     * antaa viikonpäivän
+     * Gives the week day when user input is made
      * @author stackoverflow.com user JDGuide
-     * @return viikonpäivä
+     * @return week day
      */
     public String getWeekDay() {
         Calendar c = Calendar.getInstance();
@@ -129,9 +129,9 @@ public class Uni {
     }
 
     /**
-     * antaa viikonpäivän numerona
+     * gives the week day as a number
      * @author stackoverflow.com user Bozho
-     * @return viikonpäivä numerona
+     * @return week day as a number
      */
     public int getWeekDayInt() {
         Calendar c = Calendar.getInstance();
@@ -141,8 +141,8 @@ public class Uni {
     }
 
     /**
-     * Muuttaa olion String muotoon
-     * @return lista
+     * Gives the information that is saved to ListView
+     * @return information to be saved in ListView
      */
     public String toString(){
         String lista = this.hours + " tuntia " + this.minutes + " minuuttia " + " tyytyväisyys " + this.happines + " " + this.dateFormat;
