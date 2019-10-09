@@ -3,7 +3,7 @@ package com.example.hyte;
 import static java.lang.String.valueOf;
 
 /**
- * Yksinkertainen laskuri, johon voi lisätä minuutteja
+ * Simple counter, in which minutes can be added up in
  * @version 2.0 8.10
  * @author Rush B
  */
@@ -11,28 +11,28 @@ public class Counter {
     private int value;
 
     /**
-     * Luo laskurin ja asettaa sen nollaan
+     * Creates the counter and resets it
      */
     public Counter(){
         this.value = 0;
     }
 
     /**
-     * Lisää laskuriin 15 minuuttia
+     * Adds 15 minutes to the counter
      */
     public void add(){
         this.value +=15;
     }
 
     /**
-     * Lisää laskuriin 60 minuuttia, eli tunnin
+     * Adds an hour (60 minutes) to the counter
      */
     public void addHour(){
         this.value +=60;
     }
 
     /**
-     * Vähentää laskurista 60 minuuttia, eli tunnin
+     * Subtracts an hour (60 minutes) from the counter
      */
     public void subtractHour(){
         if (this.value - 60 < 0) {
@@ -43,7 +43,7 @@ public class Counter {
     }
 
     /**
-     * Vähentää laskurista 15 minuuttia
+     * Subtracts 15 from the counter
      */
     public void subtract(){
         if (this.value - 15 < 0) {
@@ -54,16 +54,16 @@ public class Counter {
     }
 
     /**
-     * antaa laskurin tiedon tunteina desimaalilukuna
-     * @return tunnit desimaalilukuna
+     * converts the minutes to hours
+     * @return hours as a decimal number
      */
     public double getTime() {
         return this.value/60;
     }
 
     /**
-     * antaa kokonaisen tunnin yli menevät minuutit
-     * @return jakojäännös, joka jää kun jaetaan minuutit 60:llä
+     * divides the minutes by 60 and gives the remainder
+     * @return remainder from the division
      */
     public String getMinutes() {
         if (this.value%60 == 0) {
@@ -74,8 +74,8 @@ public class Counter {
     }
 
     /**
-     * Antaa tunnit kokonaislukuna
-     * @return tunnit kokonaislukuna
+     * Hours as a whole number
+     * @return hours as a whole number
      */
     public String getHours() {
         double hoursDouble = this.value/60;
@@ -83,8 +83,8 @@ public class Counter {
     }
 
     /**
-     * Antaa tunnit ja minuutit erillään
-     * @return tunnit ja minuutit erillään
+     * Gives hours and minutes separately
+     * @return hours and minutes separately
      */
     public String getHourAndMinute(){
         return getHours()+":"+getMinutes();
